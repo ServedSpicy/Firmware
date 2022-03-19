@@ -4,6 +4,7 @@
 
 
 #include "Main.hpp"
+#include "Mixing.hpp"
 
 LiquidCrystal_I2C lcd(0x27,20,4);
 
@@ -95,22 +96,23 @@ void drawMixingMenu(){
 
     lcd.clear();
 
-    u8 index = recipeIndex + 1;
+    lcd.setCursor(0,0);
+    lcd.print(">> ");
+    lcd.print(mixingRecipe.name);
 
-    if(index >= recipeCount)
-        index = 2;
+    lcd.setCursor(0,2);
+    lcd.print("Amount: ");
+
+    if(mixingAmount < 10)
+        lcd.print("  ");
     else
-    if(index == 1)
-        index = 0;
-    else
-        index = 1;
+    if(mixingAmount < 100)
+        lcd.print(" ");
 
-    Serial.print("Item: ");
-    Serial.println(index);
+    lcd.print(mixingAmount);
 
-    while(true){
-        delay(1);
-    }
+    lcd.print(" Tsp");
+
 }
 
 

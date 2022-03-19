@@ -10,15 +10,7 @@
 #include "Synchronize.hpp"
 #include "Main.hpp"
 #include "Recipe.hpp"
-
-
-
-const byte
-    pin_enter = 7 ,
-    pin_right = 6 ,
-    pin_left = 5 ,
-    pin_down = 4 ,
-    pin_up = 3 ;
+#include "Mixing.hpp"
 
 
 #define cycle while(true)
@@ -50,10 +42,7 @@ struct RecipeData {
     u8 size;
 };
 
-void waitForButton(u8 pin){
-    while(digitalRead(pin))
-        delay(1);
-}
+
 
 RecipeData loadRecipe(u16 address){
 
@@ -250,13 +239,13 @@ void idle(){
 
         if(digitalRead(pin_left)){
             waitForButton(pin_left);
-            drawMixingMenu();
+            prepareMixing();
             return;
         }
 
         if(digitalRead(pin_right)){
             waitForButton(pin_right);
-            drawMixingMenu();
+            prepareMixing();
             return;
         }
 

@@ -22,4 +22,16 @@ extern byte recipeIndex;
 extern byte recipeCount;
 extern bool redraw;
 
+const byte
+    pin_enter = 7 ,
+    pin_right = 6 ,
+    pin_left = 5 ,
+    pin_down = 4 ,
+    pin_up = 3 ;
+
+inline void waitForButton(u8 pin){
+    while(digitalRead(pin))
+        delay(1);
+}
+
 #endif
