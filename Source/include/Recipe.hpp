@@ -3,6 +3,7 @@
 
 #include <Arduino.h>
 
+#include <vector>
 
 struct Spice {
     byte spice;
@@ -11,7 +12,7 @@ struct Spice {
 
 struct Recipe {
     String name;
-    struct Spice spices[];
+    std::vector<Spice> spices;
 };
 
 

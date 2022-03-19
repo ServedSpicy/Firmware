@@ -34,14 +34,51 @@ using namespace Memory;
 
 byte recipeIndex = 0;
 byte recipeCount = 0;
-static int16_t recipeOffset = 1;
+u16 recipeOffset = 1;
+
+#include <vector>
 
 
 
+std::deque<Recipe> recipes;
+std::vector<u8> sizes;
+// bool reverse = false;
+bool redraw = true;
 
 
-std::deque<ListEntry> recipes;
-bool reverse = false;
+struct RecipeData {
+    Recipe recipe;
+    u8 size;
+};
+
+RecipeData loadRecipe(u16 address){
+
+    using Memory::readString;
+
+    const u8 length = EEPROM.read(address);
+    const auto name = readString(address);
+
+    address += length + 1;
+
+    std::vector<Spice> spices;
+
+    const u8 count = EEPROM.read(address);
+
+    address++;
+
+    for(byte s = 0;s < count;s++,address += 2){
+        u8 spice = EEPROM.read(address);
+        u8 amount = EEPROM.read(address + 1);
+        spices.push_back({ spice , amount });
+    }
+
+    const u8 size = 1 + length + 1 + count * 2;
+
+    Recipe recipe = { name , spices };
+
+    return { recipe , size };
+}
+
 
 void prepareRecipeList(){
 
@@ -50,7 +87,7 @@ void prepareRecipeList(){
     print("Recipes: ");
     println(recipeCount);
 
-    for(byte r = 0;r <= 3;r++){
+    for(byte r = 0;r <= 2;r++){
 
         if(recipeIndex + r >= recipeCount)
             continue;
@@ -71,37 +108,101 @@ void prepareRecipeList(){
         print("Name: ");
         println(name);
 
-        byte spices = EEPROM.read(recipeOffset);
-        recipeOffset += spices * 2;
+        byte spiceCount = EEPROM.read(recipeOffset);
+        // recipeOffset += spices * 2;
         recipeOffset++; // Skip spices offset
 
         print("Spices: ");
-        println(spices);
+        println(spiceCount);
 
-        // for(byte s = 0;s <= spiceCount;s++,recipeOffset += 2){
-        //     byte spice = EEPROM.read(recipeOffset);
-        //     byte amount = EEPROM.read(recipeOffset + 1);
-        //     spices[s] = { spice , amount };
-        // }
+        std::vector<Spice> spices;
+
+        for(byte s = 0;s < spiceCount;s++,recipeOffset += 2){
+            byte spice = EEPROM.read(recipeOffset);
+            byte amount = EEPROM.read(recipeOffset + 1);
+            // spices[s] = { spice , amount };
+            print("Spice: ");
+            print(spice);
+            print(" Amount: ");
+            println(amount);
+            spices.push_back({ spice , amount });
+        }
 
         size = recipeOffset - size;
 
-        if(reverse){
-
-            if(recipes.size() > 3)
-                recipes.pop_back();
-
-            recipes.push_front({ name , size });
-
-        } else {
-
-            if(recipes.size() > 3)
-                recipes.pop_front();
-
-            recipes.push_back({ name , size });
-        }
-        // recipes[r] = Recipe(name,spices);
+        recipes.push_back({ name , spices });
+        sizes.push_back(size);
     }
+
+    Serial.print("Deque: ");
+    Serial.println(recipes.size());
+    recipeOffset = 1;
+}
+
+void loadNextRecipe(){
+
+    Serial.println("Loading Next recipe");
+
+    const auto index = recipeIndex;
+
+    if(recipeIndex < recipeCount - 2)
+        recipeIndex++;
+
+    Serial.print("Recipe Index: ");
+    Serial.println(recipeIndex);
+
+    const u8 count = sizes.size();
+
+    if(count < 3)
+        return;
+
+    if(recipeIndex < 2)
+        return;
+
+    if(index >= recipeCount - 2)
+        return;
+
+    redraw = true;
+
+    u16 offset = 0;
+
+    offset += sizes.at(count - 1);
+    offset += sizes.at(count - 2);
+    offset += sizes.at(count - 3);
+
+    const auto data = loadRecipe(recipeOffset + offset);
+
+    Serial.print(" Recipe: ");
+    Serial.println(data.recipe.name);
+
+    recipes.pop_front();
+    recipes.push_back(data.recipe);
+    sizes.push_back(data.size);
+
+    recipeOffset += sizes.at(count - 2);
+}
+
+void loadPreviousRecipe(){
+
+    Serial.println("Loading previous recipe");
+
+    if(recipeIndex > 0)
+        recipeIndex--;
+
+    if(sizes.size() < 4)
+        return;
+
+    redraw = true;
+
+    const auto last = sizes.at(0);
+
+    const auto data = loadRecipe(recipeOffset - last);
+
+    recipes.pop_back();
+    recipes.push_front(data.recipe);
+    sizes.pop_back();
+
+    recipeOffset -= data.size;
 }
 
 
@@ -110,7 +211,7 @@ void idle(){
 
     println("Idling");
 
-    prepareRecipeList();
+    // prepareRecipeList();
 
     drawRecipeList();
 
@@ -137,11 +238,27 @@ void idle(){
 
         println("Normal work mode started!");
 
-        drawMainMenu();
+        // drawMainMenu();
 
-        while(true){
-            delay(400);
-            println(">");
+        // while(true){
+        //     delay(400);
+        //     println(">");
+        // }
+
+        if(digitalRead(pin_down)){
+            while(digitalRead(pin_down))
+                delay(1);
+            loadNextRecipe();
+            // drawRecipeList();
+            return;
+        }
+
+        if(digitalRead(pin_up)){
+            while(digitalRead(pin_up))
+                delay(1);
+            loadPreviousRecipe();
+            // drawRecipeList();
+            return;
         }
 
         return;
@@ -179,6 +296,8 @@ void setup(){
 
     pinMode(12,INPUT);
 
+    prepareDisplay();
+
     EEPROM.write(0,4);
     Memory::writeString(1,"Chicken Mix1");
     EEPROM.write(14,1);
@@ -196,9 +315,14 @@ void setup(){
     EEPROM.write(48,2);
 
     Memory::writeString(49,"Chicken Mix4");
-    EEPROM.write(62,1);
+    EEPROM.write(62,2);
     EEPROM.write(63,4);
     EEPROM.write(64,2);
+    EEPROM.write(65,66);
+    EEPROM.write(66,12);
+
+
+    prepareRecipeList();
 }
 
 void loop(){
