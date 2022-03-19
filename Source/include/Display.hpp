@@ -7,7 +7,6 @@
 
 
 extern LiquidCrystal_I2C lcd;
-extern byte index;
 
 void drawList();
 

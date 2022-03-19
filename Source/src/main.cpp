@@ -142,8 +142,10 @@ void loadNextRecipe(){
 
     const auto index = recipeIndex;
 
-    if(recipeIndex < recipeCount - 2)
+    if(recipeIndex < recipeCount - 1){
         recipeIndex++;
+        redraw = true;
+    }
 
     Serial.print("Recipe Index: ");
     Serial.println(recipeIndex);
@@ -158,8 +160,6 @@ void loadNextRecipe(){
 
     if(index >= recipeCount - 2)
         return;
-
-    redraw = true;
 
     u16 offset = 0;
 
@@ -183,13 +183,16 @@ void loadPreviousRecipe(){
 
     Serial.println("Loading previous recipe");
 
-    if(recipeIndex > 0)
+    if(recipeIndex > 0){
         recipeIndex--;
+        redraw = true;
+    }
 
     if(sizes.size() < 4)
         return;
 
-    redraw = true;
+    if(recipeIndex >= recipeCount - 2)
+        return;
 
     const auto last = sizes.at(0);
 

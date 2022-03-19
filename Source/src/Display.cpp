@@ -7,7 +7,6 @@
 
 LiquidCrystal_I2C lcd(0x27,20,4);
 
-byte index = 0;
 
 void drawList(){
     for(byte r = 0;r <= 4;r++)
@@ -32,13 +31,16 @@ void drawRecipeList(){
         lcd.setCursor(0,0);
         lcd.print("Recipe List Menu");
 
-        byte count = recipeCount;
+        byte count = 3;
 
-        if(recipeIndex > 1)
-            count -= recipeIndex;
+        // if(recipeIndex == 0)
+        //     count = 2;
 
-        if(count > 3)
-            count = 3;
+        if(recipeIndex >= recipeCount - 1)
+            count = 2;
+
+        if(count > recipeCount)
+            count = recipeCount;
 
         Serial.print("Count To Show: ");
         Serial.println(count);
@@ -49,11 +51,19 @@ void drawRecipeList(){
                 lcd.print("                  ");
                 lcd.setCursor(2,r + 1);
 
-                if(r < count){
+                Serial.print(r);
+                Serial.print(" : ");
+                Serial.println(count);
+
+                if(r + 1 <= count){
+
                     u8 offset = r;
 
                     if(recipeIndex > 1)
-                        offset += recipeIndex - 1;
+                        offset += recipeIndex - 2;
+
+                    // if(recipeIndex + 1 == recipeCount)
+                    //     offset += 1;
 
 
                     lcd.print(recipes.at(offset).name);
