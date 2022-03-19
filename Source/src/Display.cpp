@@ -27,14 +27,10 @@ void drawRecipeList(){
 
     delay(100);
 
-    // lcd.home();
-
     if(recipeCount > 0){
 
-        if(redraw){
-            lcd.setCursor(0,0);
-            lcd.print("Recipe List Menu");
-        }
+        lcd.setCursor(0,0);
+        lcd.print("Recipe List Menu");
 
         byte count = recipeCount;
 
@@ -49,9 +45,9 @@ void drawRecipeList(){
 
         if(redraw)
             for(byte r = 0;r < 3;r++){
-                lcd.setCursor(1,r + 1);
-                lcd.print("                   ");
-                lcd.setCursor(1,r + 1);
+                lcd.setCursor(2,r + 1);
+                lcd.print("                  ");
+                lcd.setCursor(2,r + 1);
 
                 if(r < count){
                     u8 offset = r;
@@ -73,10 +69,9 @@ void drawRecipeList(){
         lcd.setCursor(0,recipeIndex == recipeCount ? 3 : recipeIndex == 0 ? 1 : 2);
         lcd.print(">");
     } else {
+        lcd.clear();
         lcd.setCursor(0,0);
         lcd.print("  No Recipes Found  ");
-        // lcd.setCursor(0,0);
-        // lcd.print("                    ");
         lcd.setCursor(0,2);
         lcd.print("   Please Use the   ");
         lcd.setCursor(0,3);
@@ -86,11 +81,26 @@ void drawRecipeList(){
     redraw = false;
 }
 
-void drawMainMenu(){
+void drawMixingMenu(){
 
+    lcd.clear();
 
-    lcd.home();
+    u8 index = recipeIndex + 1;
 
+    if(index >= recipeCount)
+        index = 2;
+    else
+    if(index == 1)
+        index = 0;
+    else
+        index = 1;
+
+    Serial.print("Item: ");
+    Serial.println(index);
+
+    while(true){
+        delay(1);
+    }
 }
 
 

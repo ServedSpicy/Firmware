@@ -11,7 +11,7 @@ extern byte index;
 
 void drawList();
 
-void drawMainMenu();
+void drawMixingMenu();
 
 void drawRecipeList();
 

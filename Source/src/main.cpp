@@ -42,7 +42,6 @@ u16 recipeOffset = 1;
 
 std::deque<Recipe> recipes;
 std::vector<u8> sizes;
-// bool reverse = false;
 bool redraw = true;
 
 
@@ -50,6 +49,11 @@ struct RecipeData {
     Recipe recipe;
     u8 size;
 };
+
+void waitForButton(u8 pin){
+    while(digitalRead(pin))
+        delay(1);
+}
 
 RecipeData loadRecipe(u16 address){
 
@@ -100,16 +104,10 @@ void prepareRecipeList(){
         println(nameLength);
         recipeOffset += nameLength; // Skip name offset
         recipeOffset++;
-        // byte spiceCount = EEPROM.read(recipeOffset);
-        // recipeOffset++;
-
-        // Spice spices[spiceCount];
-
         print("Name: ");
         println(name);
 
         byte spiceCount = EEPROM.read(recipeOffset);
-        // recipeOffset += spices * 2;
         recipeOffset++; // Skip spices offset
 
         print("Spices: ");
@@ -120,7 +118,6 @@ void prepareRecipeList(){
         for(byte s = 0;s < spiceCount;s++,recipeOffset += 2){
             byte spice = EEPROM.read(recipeOffset);
             byte amount = EEPROM.read(recipeOffset + 1);
-            // spices[s] = { spice , amount };
             print("Spice: ");
             print(spice);
             print(" Amount: ");
@@ -211,8 +208,6 @@ void idle(){
 
     println("Idling");
 
-    // prepareRecipeList();
-
     drawRecipeList();
 
     cycle {
@@ -238,26 +233,27 @@ void idle(){
 
         println("Normal work mode started!");
 
-        // drawMainMenu();
-
-        // while(true){
-        //     delay(400);
-        //     println(">");
-        // }
-
         if(digitalRead(pin_down)){
-            while(digitalRead(pin_down))
-                delay(1);
+            waitForButton(pin_down);
             loadNextRecipe();
-            // drawRecipeList();
             return;
         }
 
         if(digitalRead(pin_up)){
-            while(digitalRead(pin_up))
-                delay(1);
+            waitForButton(pin_up);
             loadPreviousRecipe();
-            // drawRecipeList();
+            return;
+        }
+
+        if(digitalRead(pin_left)){
+            waitForButton(pin_left);
+            drawMixingMenu();
+            return;
+        }
+
+        if(digitalRead(pin_right)){
+            waitForButton(pin_right);
+            drawMixingMenu();
             return;
         }
 
