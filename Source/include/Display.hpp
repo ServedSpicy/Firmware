@@ -16,5 +16,9 @@ void drawRecipeList();
 
 void prepareDisplay();
 
+void drawProgressMenu();
+
+void drawAbort();
+
 
 #endif

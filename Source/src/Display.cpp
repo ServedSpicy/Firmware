@@ -5,6 +5,7 @@
 
 #include "Main.hpp"
 #include "Mixing.hpp"
+#include "Progress.hpp"
 
 LiquidCrystal_I2C lcd(0x27,20,4);
 
@@ -115,4 +116,32 @@ void drawMixingMenu(){
 
 }
 
+void drawProgressMenu(){
+     lcd.clear();
 
+    lcd.setCursor(0,0);
+    lcd.print(">> ");
+    lcd.print(mixingRecipe.name);
+
+    lcd.setCursor(0,2);
+    lcd.print("Progress: ");
+
+    if(progress < 10)
+        lcd.print(" ");
+
+    lcd.print(progress);
+
+    lcd.print(" / ");
+
+    lcd.print(mixingRecipe.spices.size());
+}
+
+
+void drawAbort(){
+    lcd.clear();
+    lcd.setCursor(0,1);
+    lcd.print("      Aborting      ");
+    lcd.setCursor(0,2);
+    lcd.print("       Mixing       ");
+    delay(2400);
+}

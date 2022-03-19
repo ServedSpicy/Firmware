@@ -3,7 +3,7 @@
 #include "Main.hpp"
 #include "Mixing.hpp"
 #include "Display.hpp"
-
+#include "Progress.hpp"
 
 Recipe mixingRecipe;
 u8 mixingAmount;
@@ -63,6 +63,14 @@ void prepareMixing(){
 
         if(digitalRead(pin_right)){
             waitForButton(pin_right);
+            redraw = true;
+            lcd.clear();
+            return;
+        }
+
+        if(digitalRead(pin_enter)){
+            waitForButton(pin_enter);
+            prepareProgressMenu();
             redraw = true;
             lcd.clear();
             return;
