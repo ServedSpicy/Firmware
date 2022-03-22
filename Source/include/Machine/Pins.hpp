@@ -3,8 +3,9 @@
 
 #include <Arduino.h>
 
+using pin = byte;
 
-const byte
+const pin
     pin_enter = 7 ,
     pin_right = 6 ,
     pin_left = 5 ,

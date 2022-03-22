@@ -1,9 +1,9 @@
 
 
 #include "Main.hpp"
-#include "Mixing.hpp"
+#include "Processes/Mixing.hpp"
 #include "Display.hpp"
-#include "Progress.hpp"
+#include "Processes/Progress.hpp"
 #include "Debug.hpp"
 #include "Machine/Pins.hpp"
 

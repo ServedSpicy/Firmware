@@ -2,7 +2,7 @@
 #include <Arduino.h>
 #include <EEPROM.h>
 
-#include "Synchronize.hpp"
+#include "Processes/Synchronize.hpp"
 #include "Debug.hpp"
 #include "Serial.hpp"
 #include "Main.hpp"

@@ -4,8 +4,8 @@
 
 
 #include "Main.hpp"
-#include "Mixing.hpp"
-#include "Progress.hpp"
+#include "Processes/Mixing.hpp"
+#include "Processes/Progress.hpp"
 #include "Debug.hpp"
 
 LiquidCrystal_I2C lcd(0x27,20,4);

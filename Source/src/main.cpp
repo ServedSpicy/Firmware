@@ -7,10 +7,10 @@
 #include "Debug.hpp"
 #include "Display.hpp"
 #include "Serial.hpp"
-#include "Synchronize.hpp"
+#include "Processes/Synchronize.hpp"
 #include "Main.hpp"
 #include "Recipe.hpp"
-#include "Mixing.hpp"
+#include "Processes/Mixing.hpp"
 
 #include "Machine/Pins.hpp"
 
