@@ -4,6 +4,7 @@
 
 #include <deque>
 #include <Arduino.h>
+#include <vector>
 
 #include "Recipe.hpp"
 
@@ -16,9 +17,11 @@ extern Mode mode;
 void reset();
 
 extern std::deque<Recipe> recipes;
-
+extern std::vector<u8> sizes;
 extern byte recipeIndex;
 extern byte recipeCount;
+extern u16 recipeOffset;
+
 extern bool redraw;
 
 
