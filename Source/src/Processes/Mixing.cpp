@@ -75,7 +75,7 @@ void Mixing::prepare(){
         }
 
         if(isClicked(pin_enter)){
-            prepareProgressMenu();
+            Progress::prepare();
             redraw = true;
             lcd.clear();
             return;

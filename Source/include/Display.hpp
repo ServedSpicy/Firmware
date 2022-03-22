@@ -14,8 +14,6 @@ void drawRecipeList();
 
 void prepareDisplay();
 
-void drawProgressMenu();
-
 void drawAbort();
 
 void drawNumber(u8 number);

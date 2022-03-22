@@ -3,8 +3,14 @@
 
 #include <Arduino.h>
 
+
 extern u8 progress;
 
-void prepareProgressMenu();
+namespace Progress {
+
+    void prepare();
+    void draw();
+}
+
 
 #endif

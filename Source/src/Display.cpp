@@ -114,28 +114,6 @@ void drawNumber(u8 number){
 }
 
 
-
-void drawProgressMenu(){
-     lcd.clear();
-
-    lcd.setCursor(0,0);
-    lcd.print(">> ");
-    lcd.print(mixingRecipe.name);
-
-    lcd.setCursor(0,2);
-    lcd.print("Progress: ");
-
-    if(progress < 10)
-        lcd.print(" ");
-
-    lcd.print(progress);
-
-    lcd.print(" / ");
-
-    lcd.print(mixingRecipe.spices.size());
-}
-
-
 void drawAbort(){
     lcd.clear();
     lcd.setCursor(0,1);
