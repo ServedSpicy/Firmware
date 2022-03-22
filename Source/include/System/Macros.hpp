@@ -6,4 +6,10 @@
      for(size_t (index) = (from);(index) < (to);(index)++)
 
 
+#define loopWithTimeout(timeout)            \
+                                            \
+        const auto start = millis();        \
+                                            \
+        while(millis() - start < (timeout)) \
+
 #endif

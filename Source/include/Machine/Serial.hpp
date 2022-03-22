@@ -7,5 +7,6 @@
 bool waitForBytes(u8 count);
 bool waitForByte();
 
+u16 readWord();
 
 #endif

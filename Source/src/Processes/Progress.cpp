@@ -14,14 +14,10 @@ void prepareProgressMenu(){
 
     drawProgressMenu();
 
+    cycle {
 
-    while(true){
-
-        if(digitalRead(pin_enter)){
-            waitForButton(pin_enter);
-
+        if(isClicked(pin_enter)){
             drawAbort();
-
             return;
         }
     }
