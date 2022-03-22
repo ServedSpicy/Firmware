@@ -4,7 +4,7 @@
 
 #include "Processes/Synchronize.hpp"
 #include "Debug.hpp"
-#include "Serial.hpp"
+#include "Machine/Serial.hpp"
 #include "Main.hpp"
 
 

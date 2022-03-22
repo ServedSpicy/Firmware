@@ -2,7 +2,7 @@
 #define Header_Synchronize
 
 
-#include "Serial.hpp"
+#include "Machine/Serial.hpp"
 
 
 bool ping();

@@ -6,7 +6,7 @@
 #include "Machine/Memory.hpp"
 #include "Debug.hpp"
 #include "Display.hpp"
-#include "Serial.hpp"
+#include "Machine/Serial.hpp"
 #include "Processes/Synchronize.hpp"
 #include "Main.hpp"
 #include "Recipe.hpp"

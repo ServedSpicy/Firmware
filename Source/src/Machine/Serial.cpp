@@ -1,8 +1,8 @@
 
-#include "Serial.hpp"
+#include "Machine/Serial.hpp"
 
 
-bool waitForBytes(byte count){
+bool waitForBytes(const u8 count){
 
     const auto time = millis();
 

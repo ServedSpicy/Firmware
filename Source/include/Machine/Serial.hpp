@@ -1,13 +1,11 @@
 #ifndef Header_Serial
 #define Header_Serial
 
-
 #include <Arduino.h>
 
-bool waitForBytes(byte count);
 
+bool waitForBytes(u8 count);
 bool waitForByte();
-
 
 
 #endif
