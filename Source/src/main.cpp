@@ -263,7 +263,7 @@ void setup(){
     EEPROM.write(66,12);
 
 
-    prepareOverviewMenu();
+    Overview::prepare();
 }
 
 void loop(){

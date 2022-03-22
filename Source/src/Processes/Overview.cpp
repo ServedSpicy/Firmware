@@ -8,8 +8,7 @@
 
 
 
-
-void prepareOverviewMenu(){
+void Overview::prepare(){
 
     recipeCount = EEPROM.read(0);
 

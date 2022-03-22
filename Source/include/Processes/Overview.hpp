@@ -4,7 +4,10 @@
 #include <Arduino.h>
 
 
-void prepareOverviewMenu();
+namespace Overview {
+
+    void prepare();
+}
 
 
 #endif
