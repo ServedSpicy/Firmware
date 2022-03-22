@@ -23,6 +23,16 @@ void prepareDisplay(){
     lcd.clear();
 }
 
+void drawNoRecipesFound(){
+    lcd.clear();
+    lcd.setCursor(0,0);
+    lcd.print("  No Recipes Found  ");
+    lcd.setCursor(0,2);
+    lcd.print("   Please Use the   ");
+    lcd.setCursor(0,3);
+    lcd.print("    Configurator    ");
+}
+
 
 void drawRecipeList(){
 
@@ -85,40 +95,25 @@ void drawRecipeList(){
         lcd.setCursor(0,recipeIndex == recipeCount ? 3 : recipeIndex == 0 ? 1 : 2);
         lcd.print(">");
     } else {
-        lcd.clear();
-        lcd.setCursor(0,0);
-        lcd.print("  No Recipes Found  ");
-        lcd.setCursor(0,2);
-        lcd.print("   Please Use the   ");
-        lcd.setCursor(0,3);
-        lcd.print("    Configurator    ");
+        drawNoRecipesFound();
     }
 
     redraw = false;
 }
 
-void drawMixingMenu(){
 
-    lcd.clear();
+void drawNumber(u8 number){
 
-    lcd.setCursor(0,0);
-    lcd.print(">> ");
-    lcd.print(mixingRecipe.name);
-
-    lcd.setCursor(0,2);
-    lcd.print("Amount: ");
-
-    if(mixingAmount < 10)
-        lcd.print("  ");
-    else
-    if(mixingAmount < 100)
+    if(number < 10)
         lcd.print(" ");
 
-    lcd.print(mixingAmount);
+    if(number < 100)
+        lcd.print(" ");
 
-    lcd.print(" Tsp");
-
+    lcd.print(number);
 }
+
+
 
 void drawProgressMenu(){
      lcd.clear();

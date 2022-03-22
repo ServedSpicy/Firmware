@@ -82,3 +82,20 @@ void prepareMixing(){
         }
     }
 }
+
+
+void drawMixingMenu(){
+
+    lcd.clear();
+
+    lcd.setCursor(0,0);
+    lcd.print(">> ");
+    lcd.print(mixingRecipe.name);
+
+    lcd.setCursor(0,2);
+    lcd.print("Amount: ");
+
+    drawNumber(mixingAmount);
+
+    lcd.print(" Tsp");
+}

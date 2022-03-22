@@ -3,9 +3,11 @@
 
 #include "Recipe.hpp"
 
+void prepareMixing();
+
+void drawMixingMenu();
+
 extern Recipe mixingRecipe;
 extern u8 mixingAmount;
-
-void prepareMixing();
 
 #endif

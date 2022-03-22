@@ -10,8 +10,6 @@ extern LiquidCrystal_I2C lcd;
 
 void drawList();
 
-void drawMixingMenu();
-
 void drawRecipeList();
 
 void prepareDisplay();
@@ -20,5 +18,6 @@ void drawProgressMenu();
 
 void drawAbort();
 
+void drawNumber(u8 number);
 
 #endif
