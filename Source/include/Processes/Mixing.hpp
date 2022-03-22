@@ -3,9 +3,16 @@
 
 #include "Recipe.hpp"
 
-void prepareMixing();
 
-void drawMixingMenu();
+namespace Mixing {
+
+    void prepare();
+    void draw();
+}
+
+// void prepareMixing();
+
+// void drawMixingMenu();
 
 extern Recipe mixingRecipe;
 extern u8 mixingAmount;

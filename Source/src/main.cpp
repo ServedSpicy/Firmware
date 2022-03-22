@@ -192,13 +192,13 @@ void idle(){
 
         if(digitalRead(pin_left)){
             waitForButton(pin_left);
-            prepareMixing();
+            Mixing::prepare();
             return;
         }
 
         if(digitalRead(pin_right)){
             waitForButton(pin_right);
-            prepareMixing();
+            Mixing::prepare();
             return;
         }
 

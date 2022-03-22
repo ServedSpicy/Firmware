@@ -32,12 +32,12 @@ auto selectedRecipe() -> Recipe {
     return recipes.at(index);
 }
 
-void prepareMixing(){
+void Mixing::prepare(){
 
     mixingAmount = 1;
     mixingRecipe = selectedRecipe();
 
-    drawMixingMenu();
+    Mixing::draw();
 
 
     const auto spices = mixingRecipe.spices;
@@ -49,7 +49,7 @@ void prepareMixing(){
             if(mixingAmount > 0)
                 mixingAmount--;
 
-            drawMixingMenu();
+            Mixing::draw();
             continue;
         }
 
@@ -58,7 +58,7 @@ void prepareMixing(){
             if(mixingAmount < 255)
                 mixingAmount++;
 
-            drawMixingMenu();
+            Mixing::draw();
             continue;
         }
 
@@ -84,7 +84,7 @@ void prepareMixing(){
 }
 
 
-void drawMixingMenu(){
+void Mixing::draw(){
 
     lcd.clear();
 
