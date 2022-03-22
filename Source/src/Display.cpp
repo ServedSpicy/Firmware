@@ -6,6 +6,7 @@
 #include "Main.hpp"
 #include "Mixing.hpp"
 #include "Progress.hpp"
+#include "Debug.hpp"
 
 LiquidCrystal_I2C lcd(0x27,20,4);
 
@@ -23,8 +24,8 @@ void prepareDisplay(){
 
 void drawRecipeList(){
 
-    Serial.print("Redrawing: ");
-    Serial.println(redraw);
+    print("Redrawing: ");
+    println(redraw);
 
     delay(100);
 
@@ -44,8 +45,8 @@ void drawRecipeList(){
         if(count > recipeCount)
             count = recipeCount;
 
-        Serial.print("Count To Show: ");
-        Serial.println(count);
+        print("Count To Show: ");
+        println(count);
 
         if(redraw)
             for(byte r = 0;r < 3;r++){
@@ -53,9 +54,9 @@ void drawRecipeList(){
                 lcd.print("                  ");
                 lcd.setCursor(2,r + 1);
 
-                Serial.print(r);
-                Serial.print(" : ");
-                Serial.println(count);
+                print(r);
+                print(" : ");
+                println(count);
 
                 if(r + 1 <= count){
 

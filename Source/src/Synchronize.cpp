@@ -60,5 +60,9 @@ bool synchronize(){
     print("Bytes: ");
     println(bytes);
 
+    delay(200);
+
+    reset();
+
     return true;
 }

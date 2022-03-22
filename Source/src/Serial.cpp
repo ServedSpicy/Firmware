@@ -4,7 +4,7 @@
 
 bool waitForBytes(byte count){
 
-    auto time = millis();
+    const auto time = millis();
 
     while(millis() - time < 1000)
         if(Serial.available() >= count)

@@ -13,28 +13,28 @@ void test(){
 
 void debug(){
 
-    Serial.println("Printing EERPOM:");
-    Serial.println("------------------------");
+    println("Printing EERPOM:");
+    println("------------------------");
 
     for(int offset = 0;offset < 1024;offset++){
 
         if(offset % 8 == 0)
-            Serial.println();
+            println("");
 
         auto value = EEPROM.read(offset);
 
         if(value < 10){
-            Serial.print("  ");
+            print("  ");
         } else
         if(value < 100){
-            Serial.print(" ");
+            print(" ");
         }
 
-        Serial.print(value);
-        Serial.print(" ");
+        print(value);
+        print(" ");
     }
 
-    Serial.println();
+    println("");
 
-    Serial.println("------------------------");
+    println("------------------------");
 }

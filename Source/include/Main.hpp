@@ -11,10 +11,7 @@ enum Mode { Normal , Synchronizing , Debug };
 
 extern Mode mode;
 
-// struct ListEntry {
-//     String name;
-//     byte size;
-// };
+void reset();
 
 extern std::deque<Recipe> recipes;
 

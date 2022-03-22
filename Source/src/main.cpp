@@ -16,6 +16,12 @@
 #define cycle while(true)
 
 
+void (* terminate) (void) = 0;
+
+void reset(){
+    terminate();
+}
+
 
 const auto BaudRate = 9600UL;
 Mode mode = Mode::Normal;
@@ -120,14 +126,14 @@ void prepareRecipeList(){
         sizes.push_back(size);
     }
 
-    Serial.print("Deque: ");
-    Serial.println(recipes.size());
+    print("Deque: ");
+    println(recipes.size());
     recipeOffset = 1;
 }
 
 void loadNextRecipe(){
 
-    Serial.println("Loading Next recipe");
+    println("Loading Next recipe");
 
     const auto index = recipeIndex;
 
@@ -136,8 +142,8 @@ void loadNextRecipe(){
         redraw = true;
     }
 
-    Serial.print("Recipe Index: ");
-    Serial.println(recipeIndex);
+    print("Recipe Index: ");
+    println(recipeIndex);
 
     const u8 count = sizes.size();
 
@@ -158,8 +164,8 @@ void loadNextRecipe(){
 
     const auto data = loadRecipe(recipeOffset + offset);
 
-    Serial.print(" Recipe: ");
-    Serial.println(data.recipe.name);
+    print(" Recipe: ");
+    println(data.recipe.name);
 
     recipes.pop_front();
     recipes.push_back(data.recipe);
@@ -170,7 +176,7 @@ void loadNextRecipe(){
 
 void loadPreviousRecipe(){
 
-    Serial.println("Loading previous recipe");
+    println("Loading previous recipe");
 
     if(recipeIndex > 0){
         recipeIndex--;
@@ -286,28 +292,28 @@ void setup(){
 
     prepareDisplay();
 
-    EEPROM.write(0,4);
-    Memory::writeString(1,"Chicken Mix1");
-    EEPROM.write(14,1);
-    EEPROM.write(15,4);
-    EEPROM.write(16,2);
+    // EEPROM.write(0,4);
+    // Memory::writeString(1,"Chicken Mix1");
+    // EEPROM.write(14,1);
+    // EEPROM.write(15,4);
+    // EEPROM.write(16,2);
 
-    Memory::writeString(17,"Chicken Mix2");
-    EEPROM.write(30,1);
-    EEPROM.write(31,4);
-    EEPROM.write(32,2);
+    // Memory::writeString(17,"Chicken Mix2");
+    // EEPROM.write(30,1);
+    // EEPROM.write(31,4);
+    // EEPROM.write(32,2);
 
-    Memory::writeString(33,"Chicken Mix3");
-    EEPROM.write(46,1);
-    EEPROM.write(47,4);
-    EEPROM.write(48,2);
+    // Memory::writeString(33,"Chicken Mix3");
+    // EEPROM.write(46,1);
+    // EEPROM.write(47,4);
+    // EEPROM.write(48,2);
 
-    Memory::writeString(49,"Chicken Mix4");
-    EEPROM.write(62,2);
-    EEPROM.write(63,4);
-    EEPROM.write(64,2);
-    EEPROM.write(65,66);
-    EEPROM.write(66,12);
+    // Memory::writeString(49,"Chicken Mix4");
+    // EEPROM.write(62,2);
+    // EEPROM.write(63,4);
+    // EEPROM.write(64,2);
+    // EEPROM.write(65,66);
+    // EEPROM.write(66,12);
 
 
     prepareRecipeList();

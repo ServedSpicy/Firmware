@@ -4,6 +4,7 @@
 #include "Mixing.hpp"
 #include "Display.hpp"
 #include "Progress.hpp"
+#include "Debug.hpp"
 
 Recipe mixingRecipe;
 u8 mixingAmount;
@@ -21,8 +22,8 @@ void prepareMixing(){
     else
         index = 1;
 
-    Serial.print("Item: ");
-    Serial.println(index);
+    print("Item: ");
+    println(index);
 
     mixingRecipe = recipes.at(index);
 
