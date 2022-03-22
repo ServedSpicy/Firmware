@@ -1,7 +1,7 @@
 
 #include <Arduino.h>
 
-#include "Memory.hpp"
+#include "Machine/Memory.hpp"
 
 
 void Memory::writeString(int address,const String & string){

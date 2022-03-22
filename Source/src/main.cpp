@@ -3,7 +3,7 @@
 #include <EEPROM.h>
 #include <deque>
 
-#include "Memory.hpp"
+#include "Machine/Memory.hpp"
 #include "Debug.hpp"
 #include "Display.hpp"
 #include "Serial.hpp"
