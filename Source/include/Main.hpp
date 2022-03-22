@@ -7,6 +7,8 @@
 
 #include "Recipe.hpp"
 
+#define cycle while(true)
+
 enum Mode { Normal , Synchronizing , Debug };
 
 extern Mode mode;

@@ -10,30 +10,39 @@
 Recipe mixingRecipe;
 u8 mixingAmount;
 
-void prepareMixing(){
 
-    mixingAmount = 1;
-    u8 index = recipeIndex + 1;
+auto dequeIndex() -> u8 {
 
-    if(index >= recipeCount)
-        index = 2;
-    else
-    if(index == 1)
-        index = 0;
-    else
-        index = 1;
+    if(recipeIndex + 1 >= recipeCount)
+        return recipeCount - 1;
+
+    if(recipeIndex == 0)
+        return 0;
+
+    return 1;
+}
+
+auto selectedRecipe() -> Recipe {
+
+    const auto index = dequeIndex();
 
     print("Item: ");
     println(index);
 
-    mixingRecipe = recipes.at(index);
+    return recipes.at(index);
+}
+
+void prepareMixing(){
+
+    mixingAmount = 1;
+    mixingRecipe = selectedRecipe();
 
     drawMixingMenu();
 
 
     const auto spices = mixingRecipe.spices;
 
-    while(true){
+    cycle {
         if(digitalRead(pin_down)){
 
             waitForButton(pin_down);

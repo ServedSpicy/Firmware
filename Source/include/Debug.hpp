@@ -6,12 +6,12 @@ void debug();
 
 template <typename Type>
 void print(Type value){
-    // Serial.print(value);
+    Serial.print(value);
 }
 
 template <typename Type>
 void println(Type value){
-    // Serial.println(value);
+    Serial.println(value);
 }
 
 void test();

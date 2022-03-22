@@ -15,9 +15,6 @@
 #include "Machine/Pins.hpp"
 
 
-#define cycle while(true)
-
-
 void (* terminate) (void) = 0;
 
 void reset(){
