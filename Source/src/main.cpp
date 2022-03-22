@@ -3,18 +3,17 @@
 #include <EEPROM.h>
 #include <deque>
 
-#include "Machine/Memory.hpp"
-#include "Debug.hpp"
 #include "Display.hpp"
-#include "Machine/Serial.hpp"
-#include "Main.hpp"
 #include "Recipe.hpp"
+#include "Debug.hpp"
+#include "Main.hpp"
 
-#include "Processes/Mixing.hpp"
 #include "Processes/Synchronize.hpp"
 #include "Processes/Overview.hpp"
+#include "Processes/Mixing.hpp"
 
-
+#include "Machine/Serial.hpp"
+#include "Machine/Memory.hpp"
 #include "Machine/Pins.hpp"
 
 
@@ -35,11 +34,6 @@ using namespace Memory;
 byte recipeIndex = 0;
 byte recipeCount = 0;
 u16 recipeOffset = 1;
-
-
-
-
-
 
 std::deque<Recipe> recipes;
 std::vector<u8> sizes;
@@ -245,28 +239,28 @@ void setup(){
 
     prepareDisplay();
 
-    // EEPROM.write(0,4);
-    // Memory::writeString(1,"Chicken Mix1");
-    // EEPROM.write(14,1);
-    // EEPROM.write(15,4);
-    // EEPROM.write(16,2);
+    EEPROM.write(0,4);
+    Memory::writeString(1,"Chicken Mix1");
+    EEPROM.write(14,1);
+    EEPROM.write(15,4);
+    EEPROM.write(16,2);
 
-    // Memory::writeString(17,"Chicken Mix2");
-    // EEPROM.write(30,1);
-    // EEPROM.write(31,4);
-    // EEPROM.write(32,2);
+    Memory::writeString(17,"Chicken Mix2");
+    EEPROM.write(30,1);
+    EEPROM.write(31,4);
+    EEPROM.write(32,2);
 
-    // Memory::writeString(33,"Chicken Mix3");
-    // EEPROM.write(46,1);
-    // EEPROM.write(47,4);
-    // EEPROM.write(48,2);
+    Memory::writeString(33,"Chicken Mix3");
+    EEPROM.write(46,1);
+    EEPROM.write(47,4);
+    EEPROM.write(48,2);
 
-    // Memory::writeString(49,"Chicken Mix4");
-    // EEPROM.write(62,2);
-    // EEPROM.write(63,4);
-    // EEPROM.write(64,2);
-    // EEPROM.write(65,66);
-    // EEPROM.write(66,12);
+    Memory::writeString(49,"Chicken Mix4");
+    EEPROM.write(62,2);
+    EEPROM.write(63,4);
+    EEPROM.write(64,2);
+    EEPROM.write(65,66);
+    EEPROM.write(66,12);
 
 
     prepareOverviewMenu();

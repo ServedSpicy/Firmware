@@ -25,10 +25,13 @@ void prepareOverviewMenu(){
 
         auto name = Memory::readString(recipeOffset);
         byte nameLength = EEPROM.read(recipeOffset);
+
         print("Name Length: ");
         println(nameLength);
+
         recipeOffset += nameLength; // Skip name offset
         recipeOffset++;
+
         print("Name: ");
         println(name);
 
@@ -41,12 +44,15 @@ void prepareOverviewMenu(){
         std::vector<Spice> spices;
 
         for(byte s = 0;s < spiceCount;s++,recipeOffset += 2){
+
             byte spice = EEPROM.read(recipeOffset);
             byte amount = EEPROM.read(recipeOffset + 1);
+
             print("Spice: ");
             print(spice);
             print(" Amount: ");
             println(amount);
+
             spices.push_back({ spice , amount });
         }
 
@@ -58,5 +64,6 @@ void prepareOverviewMenu(){
 
     print("Deque: ");
     println(recipes.size());
+
     recipeOffset = 1;
 }

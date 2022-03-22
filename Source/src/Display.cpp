@@ -7,6 +7,7 @@
 #include "Processes/Mixing.hpp"
 #include "Processes/Progress.hpp"
 #include "Debug.hpp"
+#include "System/Macros.hpp"
 
 LiquidCrystal_I2C lcd(0x27,20,4);
 
@@ -22,6 +23,7 @@ void prepareDisplay(){
     lcd.clear();
 }
 
+
 void drawRecipeList(){
 
     print("Redrawing: ");
@@ -36,9 +38,6 @@ void drawRecipeList(){
 
         byte count = 3;
 
-        // if(recipeIndex == 0)
-        //     count = 2;
-
         if(recipeIndex >= recipeCount - 1)
             count = 2;
 
@@ -48,30 +47,34 @@ void drawRecipeList(){
         print("Count To Show: ");
         println(count);
 
+        auto drawRecipe = [ & ](u8 index){
+
+            const auto line = index + 1;
+
+            lcd.setCursor(2,line);
+            lcd.print("                  ");
+            lcd.setCursor(2,line);
+
+            print(index);
+            print(" : ");
+            println(count);
+
+            if(line > count)
+                return;
+
+            u8 offset = index;
+
+            if(recipeIndex > 1)
+                offset += recipeIndex - 2;
+
+            const auto recipe = recipes.at(offset);
+
+            lcd.print(recipe.name);
+        };
+
         if(redraw)
-            for(byte r = 0;r < 3;r++){
-                lcd.setCursor(2,r + 1);
-                lcd.print("                  ");
-                lcd.setCursor(2,r + 1);
-
-                print(r);
-                print(" : ");
-                println(count);
-
-                if(r + 1 <= count){
-
-                    u8 offset = r;
-
-                    if(recipeIndex > 1)
-                        offset += recipeIndex - 2;
-
-                    // if(recipeIndex + 1 == recipeCount)
-                    //     offset += 1;
-
-
-                    lcd.print(recipes.at(offset).name);
-                }
-            }
+            forRange(0,3,r)
+                drawRecipe(r);
 
         lcd.setCursor(0,1);
         lcd.print(' ');
