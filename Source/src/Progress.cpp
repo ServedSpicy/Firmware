@@ -3,6 +3,7 @@
 #include "Progress.hpp"
 #include "Display.hpp"
 #include "Main.hpp"
+#include "Machine/Pins.hpp"
 
 
 u8 progress = 0;

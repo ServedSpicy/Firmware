@@ -12,6 +12,8 @@
 #include "Recipe.hpp"
 #include "Mixing.hpp"
 
+#include "Machine/Pins.hpp"
+
 
 #define cycle while(true)
 

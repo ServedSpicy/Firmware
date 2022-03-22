@@ -5,6 +5,7 @@
 #include "Display.hpp"
 #include "Progress.hpp"
 #include "Debug.hpp"
+#include "Machine/Pins.hpp"
 
 Recipe mixingRecipe;
 u8 mixingAmount;
