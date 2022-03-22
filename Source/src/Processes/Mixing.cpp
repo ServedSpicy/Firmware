@@ -43,9 +43,8 @@ void prepareMixing(){
     const auto spices = mixingRecipe.spices;
 
     cycle {
-        if(digitalRead(pin_down)){
 
-            waitForButton(pin_down);
+        if(isClicked(pin_down)){
 
             if(mixingAmount > 0)
                 mixingAmount--;
@@ -54,9 +53,7 @@ void prepareMixing(){
             continue;
         }
 
-        if(digitalRead(pin_up)){
-
-            waitForButton(pin_up);
+        if(isClicked(pin_up)){
 
             if(mixingAmount < 255)
                 mixingAmount++;
@@ -65,22 +62,19 @@ void prepareMixing(){
             continue;
         }
 
-        if(digitalRead(pin_left)){
-            waitForButton(pin_left);
+        if(isClicked(pin_left)){
             lcd.clear();
             redraw = true;
             return;
         }
 
-        if(digitalRead(pin_right)){
-            waitForButton(pin_right);
+        if(isClicked(pin_right)){
             redraw = true;
             lcd.clear();
             return;
         }
 
-        if(digitalRead(pin_enter)){
-            waitForButton(pin_enter);
+        if(isClicked(pin_enter)){
             prepareProgressMenu();
             redraw = true;
             lcd.clear();

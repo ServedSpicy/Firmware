@@ -27,4 +27,22 @@ inline void waitForButton(u8 pin){
         delay(1);
 }
 
+inline bool isPressed(u8 pin){
+    const auto bit = digitalPinToBitMask(pin);
+    const auto port = digitalPinToPort(pin);
+    return * portInputRegister(port) & bit;
+}
+
+inline bool isClicked(u8 pin){
+
+    bool wasClicked = false;
+
+    while(isPressed(pin)){
+        wasClicked = true;
+        delay(10);
+    }
+
+    return wasClicked;
+}
+
 #endif
