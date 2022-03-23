@@ -32,13 +32,6 @@ void drawSplashScreen(){
             forRange(0,8,b)
                 buffer[b] = pgm_read_byte_near(panels + panel * 8 + b);
 
-            Serial.print(x);
-            Serial.print(" ");
-            Serial.print(y);
-            Serial.print(" ");
-            Serial.print(" ");
-            Serial.println(buffer[0]);
-
             lcd.createChar(panel,buffer);
             lcd.setCursor(x + 8,y);
             lcd.write(panel);
