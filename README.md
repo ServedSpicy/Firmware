@@ -17,7 +17,7 @@
 <b>
 
 ┏━━━━━━┓  ┏━━━━━━┓ <br>
-┃    [Install]    ┃  ┃  [Design]  ┃ <br>
+┃    [Install]    ┃  ┃        [Design]       ┃ <br>
 ┗━━━━━━┛  ┗━━━━━━┛ <br>
 
 </b>
