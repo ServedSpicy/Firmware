@@ -152,6 +152,8 @@ void loadPreviousRecipe(){
 
 void idle(){
 
+    using namespace Machine::Pins;
+
     println("Idling");
 
     drawRecipeList();
@@ -162,10 +164,10 @@ void idle(){
             break;
 
         if(
-            digitalRead(pin_down) ||
-            digitalRead(pin_up) ||
-            digitalRead(pin_right) ||
-            digitalRead(pin_left)
+            digitalRead(Right) ||
+            digitalRead(Left) ||
+            digitalRead(Down) ||
+            digitalRead(Up)
         ){
             mode = Mode::Normal;
             break;
@@ -179,26 +181,26 @@ void idle(){
 
         println("Normal work mode started!");
 
-        if(digitalRead(pin_down)){
-            waitForButton(pin_down);
+        if(digitalRead(Down)){
+            waitForButton(Down);
             loadNextRecipe();
             return;
         }
 
-        if(digitalRead(pin_up)){
-            waitForButton(pin_up);
+        if(digitalRead(Up)){
+            waitForButton(Up);
             loadPreviousRecipe();
             return;
         }
 
-        if(digitalRead(pin_left)){
-            waitForButton(pin_left);
+        if(digitalRead(Left)){
+            waitForButton(Left);
             Mixing::prepare();
             return;
         }
 
-        if(digitalRead(pin_right)){
-            waitForButton(pin_right);
+        if(digitalRead(Right)){
+            waitForButton(Right);
             Mixing::prepare();
             return;
         }
@@ -220,6 +222,8 @@ void idle(){
 
 void setup(){
 
+    using namespace Machine::Pins;
+
     Serial.begin(BaudRate);
 
     lcd.init();
@@ -228,11 +232,11 @@ void setup(){
 
     //  User Interface Buttons
 
-    pinMode(pin_enter,INPUT);
-    pinMode(pin_right,INPUT);
-    pinMode(pin_down,INPUT);
-    pinMode(pin_left,INPUT);
-    pinMode(pin_up,INPUT);
+    pinMode(Enter,INPUT);
+    pinMode(Right,INPUT);
+    pinMode(Down,INPUT);
+    pinMode(Left,INPUT);
+    pinMode(Up,INPUT);
 
     //  Photoelectric Barrier
 

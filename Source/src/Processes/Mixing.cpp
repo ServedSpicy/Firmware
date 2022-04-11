@@ -34,6 +34,8 @@ auto selectedRecipe() -> Recipe {
 
 void Mixing::prepare(){
 
+    using namespace Machine::Pins;
+
     mixingAmount = 1;
     mixingRecipe = selectedRecipe();
 
@@ -44,7 +46,7 @@ void Mixing::prepare(){
 
     cycle {
 
-        if(isClicked(pin_down)){
+        if(isClicked(Down)){
 
             if(mixingAmount > 0)
                 mixingAmount--;
@@ -53,7 +55,7 @@ void Mixing::prepare(){
             continue;
         }
 
-        if(isClicked(pin_up)){
+        if(isClicked(Up)){
 
             if(mixingAmount < 255)
                 mixingAmount++;
@@ -62,19 +64,19 @@ void Mixing::prepare(){
             continue;
         }
 
-        if(isClicked(pin_left)){
+        if(isClicked(Left)){
             lcd.clear();
             redraw = true;
             return;
         }
 
-        if(isClicked(pin_right)){
+        if(isClicked(Right)){
             redraw = true;
             lcd.clear();
             return;
         }
 
-        if(isClicked(pin_enter)){
+        if(isClicked(Enter)){
             Progress::prepare();
             redraw = true;
             lcd.clear();

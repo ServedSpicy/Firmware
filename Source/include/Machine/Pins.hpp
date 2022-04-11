@@ -3,14 +3,37 @@
 
 #include <Arduino.h>
 
-using pin = byte;
 
-const pin
-    pin_enter = 7 ,
-    pin_right = 6 ,
-    pin_left = 5 ,
-    pin_down = 4 ,
-    pin_up = 3 ;
+namespace Machine {
+
+    using pin = byte;
+
+
+    namespace Pins {
+
+        /**
+         *  @brief Pins used for the user interface.
+         *  @details
+         *
+         *             3
+         *             ▲
+         *
+         *      5 ◀   ▪ 7 ▶ 6
+         *
+         *             ▼
+         *             4
+         *
+         */
+
+        const pin
+            Enter = 7 ,
+            Right = 6 ,
+            Left = 5 ,
+            Down = 4 ,
+            Up = 3 ;
+
+    }
+}
 
 
 #endif

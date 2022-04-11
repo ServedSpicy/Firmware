@@ -13,13 +13,15 @@ u8 progress = 0;
 
 void Progress::prepare(){
 
+    using namespace Machine::Pins;
+
     progress = 0;
 
     Progress::draw();
 
     cycle {
 
-        if(isClicked(pin_enter)){
+        if(isClicked(Enter)){
             drawAbort();
             return;
         }
