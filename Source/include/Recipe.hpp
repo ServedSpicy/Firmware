@@ -2,16 +2,24 @@
 #define Header_Recipe
 
 #include <Arduino.h>
-
 #include <vector>
 
-struct Spice {
-    byte spice;
-    byte amount;
-};
+#include "Spice.hpp"
+
 
 struct Recipe {
+
+    /**
+     * @brief Name to display in menus.
+     */
+
     String name;
+
+
+    /**
+     * @brief List of spice container Ids & amounts.
+     */
+
     std::vector<Spice> spices;
 };
 
