@@ -18,7 +18,11 @@
 
  ⤷ **[`Recipe.hpp`]**
 
-   *Recipe / Spice abstraction*
+   *Recipe abstraction*
+
+ ⤷ **[`Spice.hpp`]**
+
+   *Spice abstraction*
 
 <br>
 <br>
@@ -78,6 +82,11 @@
 
    *General macros*
 
+ ⤷ **[`EEPROMWriter.hpp`]**
+
+   *EEPROM wrapper with builtin offset*
+
+
 
 <!--/////////////////////////////////////////////////////////////////////////-->
 
@@ -86,6 +95,7 @@
 [`Display.hpp`]: ../Source/include/Display.hpp
 [`Main.hpp`]: ../Source/include/Main.hpp
 [`Recipe.hpp`]: ../Source/include/Recipe.hpp
+[`Spice.hpp`]: ../Source/include/Spice.hpp
 
 [`/Machine/`]: ../Source/include/Machine/
 [`Memory.hpp`]: ../Source/include/Machine/Memory.hpp
@@ -102,3 +112,4 @@
 
 [`/System/`]: ../Source/include/System/
 [`Macros.hpp`]: ../Source/include/System/Macros.hpp
+[`EEPROMWriter.hpp`]: ../Source/include/System/EEPROMWriter.hpp

@@ -3,7 +3,11 @@
 
 
 #define forRange(from,to,index) \
-     for(size_t (index) = (from);(index) < (to);(index)++)
+    for(size_t (index) = (from);(index) < (to);(index)++)
+
+
+#define iterate(times) \
+    for(size_t _index = 0;_index < (times);_index++)
 
 
 #define loopWithTimeout(timeout)            \

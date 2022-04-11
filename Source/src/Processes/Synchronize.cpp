@@ -7,6 +7,7 @@
 #include "Machine/Serial.hpp"
 #include "Main.hpp"
 #include "System/Macros.hpp"
+#include "System/EEPROMWriter.hpp"
 
 
 bool readResponse(){
@@ -48,12 +49,15 @@ bool synchronize(){
 
     const auto bytes = readWord();
 
-    for(byte offset = 0;offset < bytes;offset++){
+    EEPROMWriter writer { 0 };
+
+    iterate(bytes){
 
         if(!waitForByte())
             return false;
 
-        EEPROM.write(offset,Serial.read());
+        writer.write(Serial.read());
+        writer.next();
     }
 
     print("Bytes: ");
