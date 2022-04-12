@@ -3,23 +3,26 @@
 #include <EEPROM.h>
 
 #include "Processes/Synchronize.hpp"
-#include "Debug.hpp"
+#include "Machine/Protocol.hpp"
 #include "Machine/Serial.hpp"
-#include "Main.hpp"
-#include "System/Macros.hpp"
 #include "System/EEPROMWriter.hpp"
+#include "System/Macros.hpp"
+#include "Debug.hpp"
+#include "Main.hpp"
 
 
 bool readResponse(){
 
+    using Machine::Protocol;
+
     const auto response = Serial.read();
 
     switch(response){
-    case 49:
+    case Protocol::StartSynchronization:
         mode = Mode::Synchronizing;
         println("Sync");
         return true;
-    case 50:
+    case Protocol::PrintDebugInformation:
         mode = Mode::Debug;
         println("Debugging");
         return true;
