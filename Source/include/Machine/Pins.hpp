@@ -15,22 +15,22 @@ namespace Machine {
          *  @brief Pins used for the user interface.
          *  @details
          *
-         *             3
+         *             7
          *             ▲
          *
-         *      5 ◀   ▪ 7 ▶ 6
+         *      5 ◀   ▪ 3 ▶ 4
          *
          *             ▼
-         *             4
+         *             6
          *
          */
 
         const pin
-            Enter = 7 ,
-            Right = 6 ,
+            Enter = 3 ,
+            Right = 4 ,
             Left = 5 ,
-            Down = 4 ,
-            Up = 3 ;
+            Down = 6 ,
+            Up = 7 ;
 
     }
 }
