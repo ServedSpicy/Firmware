@@ -19,14 +19,6 @@
 #include "Machine/Integrity.hpp"
 
 
-// void (* terminate) (void) = 0;
-
-void reset(){
-    // terminate();
-    volatile char * a = (char *) 2;
-}
-
-
 const auto BaudRate = 9600UL;
 Mode mode = Mode::Normal;
 
@@ -213,6 +205,7 @@ void idle(){
         if(!synchronize()){
             println("Failed to synchronize!");
             drawSynchronizationFailed();
+            redrawRecipeList();
         }
 
         return;

@@ -14,8 +14,6 @@ enum Mode { Normal , Synchronizing , Debug };
 
 extern Mode mode;
 
-void reset();
-
 extern std::deque<Recipe> recipes;
 extern std::vector<u8> sizes;
 extern byte recipeIndex;

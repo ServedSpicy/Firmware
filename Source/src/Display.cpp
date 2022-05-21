@@ -30,7 +30,6 @@ void drawSynchronizationFailed(){
     lcd.setCursor(0,2);
     lcd.print("       Failed       ");
     delay(2000);
-    lcd.clear();
 }
 
 void drawNoRecipesFound(){
@@ -43,6 +42,12 @@ void drawNoRecipesFound(){
     lcd.print("    Configurator    ");
 }
 
+
+void redrawRecipeList(){
+    lcd.clear();
+    delay(100);
+    drawRecipeList();
+}
 
 void drawRecipeList(){
 

@@ -37,9 +37,11 @@ bool ping(){
 
     Serial.write(1);
 
-    loopWithTimeout(10)
+    loopWithTimeout(10){
+
         if(Serial.available())
             return readResponse();
+    }
 
     return false;
 }
@@ -61,9 +63,6 @@ bool synchronize(){
 
     const auto bytes = readWord();
 
-    // char count[4];
-    // itoa(bytes,count,10);
-
     lcd.setCursor(5,2);
     lcd.print(bytes);
 
@@ -82,8 +81,6 @@ bool synchronize(){
     println(bytes);
 
     delay(1000);
-
-    lcd.clear();
 
     return true;
 }

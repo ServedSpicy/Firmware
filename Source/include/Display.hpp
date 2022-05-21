@@ -11,6 +11,7 @@ extern LiquidCrystal_I2C lcd;
 void drawList();
 
 void drawRecipeList();
+void redrawRecipeList();
 
 void drawSynchronizationFailed();
 
