@@ -12,6 +12,8 @@ void drawList();
 
 void drawRecipeList();
 
+void drawSynchronizationFailed();
+
 void prepareDisplay();
 
 void drawAbort();

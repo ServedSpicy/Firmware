@@ -210,8 +210,10 @@ void idle(){
         return;
     case Synchronizing:
 
-        if(!synchronize())
+        if(!synchronize()){
             println("Failed to synchronize!");
+            drawSynchronizationFailed();
+        }
 
         return;
     case Debug:

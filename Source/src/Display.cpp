@@ -23,6 +23,16 @@ void prepareDisplay(){
     lcd.clear();
 }
 
+void drawSynchronizationFailed(){
+    lcd.clear();
+    lcd.setCursor(0,1);
+    lcd.print("   Synchronization  ");
+    lcd.setCursor(0,2);
+    lcd.print("       Failed       ");
+    delay(2000);
+    lcd.clear();
+}
+
 void drawNoRecipesFound(){
     lcd.clear();
     lcd.setCursor(0,0);

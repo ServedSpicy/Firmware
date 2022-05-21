@@ -1,6 +1,7 @@
 
 #include <Arduino.h>
 #include <EEPROM.h>
+#include <string.h>
 
 #include "Processes/Synchronize.hpp"
 #include "Machine/Protocol.hpp"
@@ -9,6 +10,7 @@
 #include "System/Macros.hpp"
 #include "Debug.hpp"
 #include "Main.hpp"
+#include "Display.hpp"
 
 
 bool readResponse(){
@@ -45,12 +47,25 @@ bool ping(){
 
 bool synchronize(){
 
+    lcd.clear();
+
+    lcd.setCursor(0,1);
+    lcd.print("    Synchronizing   ");
+    lcd.setCursor(0,2);
+    lcd.print("           Bytes   ");
+
     if(!waitForBytes(2))
         return false;
 
     test();
 
     const auto bytes = readWord();
+
+    // char count[4];
+    // itoa(bytes,count,10);
+
+    lcd.setCursor(5,2);
+    lcd.print(bytes);
 
     EEPROMWriter writer { 0 };
 
@@ -66,8 +81,9 @@ bool synchronize(){
     print("Bytes: ");
     println(bytes);
 
-    delay(200);
-    reset();
+    delay(1000);
+
+    lcd.clear();
 
     return true;
 }
