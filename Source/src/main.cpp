@@ -16,12 +16,14 @@
 #include "Machine/Serial.hpp"
 #include "Machine/Memory.hpp"
 #include "Machine/Pins.hpp"
+#include "Machine/Integrity.hpp"
 
 
-void (* terminate) (void) = 0;
+// void (* terminate) (void) = 0;
 
 void reset(){
-    terminate();
+    // terminate();
+    volatile char * a = (char *) 2;
 }
 
 
@@ -244,6 +246,8 @@ void setup(){
 
     prepareDisplay();
     drawSplashScreen();
+
+    Integrity::checkEEPROM();
 
 
 

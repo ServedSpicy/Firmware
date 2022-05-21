@@ -3,7 +3,10 @@
 
 #include "Main.hpp"
 #include "Debug.hpp"
+
 #include "Processes/Overview.hpp"
+
+#include "Machine/Integrity.hpp"
 #include "Machine/Memory.hpp"
 
 
@@ -65,4 +68,6 @@ void Overview::prepare(){
     println(recipes.size());
 
     recipeOffset = 1;
+
+    Integrity::defuseEEPROM();
 }
