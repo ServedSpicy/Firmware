@@ -30,7 +30,7 @@ void Progress::prepare(){
 
 void Progress::draw(){
 
-    lcd.clear();
+    clearScreen();
 
     lcd.setCursor(0,0);
     lcd.print(">> ");

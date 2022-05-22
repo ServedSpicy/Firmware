@@ -13,6 +13,10 @@
 
 void Overview::prepare(){
 
+
+    Integrity::checkEEPROM();
+
+
     recipeCount = EEPROM.read(0);
 
     print("Recipes: ");

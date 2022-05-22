@@ -8,6 +8,8 @@
 
 extern LiquidCrystal_I2C lcd;
 
+void clearScreen();
+
 void drawList();
 
 void drawRecipeList();

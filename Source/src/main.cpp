@@ -205,8 +205,19 @@ void idle(){
         if(!synchronize()){
             println("Failed to synchronize!");
             drawSynchronizationFailed();
-            redrawRecipeList();
+        } else {
+
+            recipeIndex = 0;
+            recipeCount = 0;
+            recipeOffset = 1;
+            redraw = true;
+            recipes.clear();
+            sizes.clear();
+
+            Overview::prepare();
         }
+
+        redrawRecipeList();
 
         return;
     case Debug:
@@ -242,7 +253,6 @@ void setup(){
     prepareDisplay();
     drawSplashScreen();
 
-    Integrity::checkEEPROM();
 
 
 

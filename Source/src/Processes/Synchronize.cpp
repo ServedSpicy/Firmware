@@ -49,7 +49,7 @@ bool ping(){
 
 bool synchronize(){
 
-    lcd.clear();
+    clearScreen();
 
     lcd.setCursor(0,1);
     lcd.print("    Synchronizing   ");

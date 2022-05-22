@@ -17,14 +17,19 @@ void drawList(){
         ;
 }
 
+void clearScreen(){
+    lcd.clear();
+    delay(10);
+}
+
 
 void prepareDisplay(){
     lcd.backlight();
-    lcd.clear();
+    clearScreen();
 }
 
 void drawSynchronizationFailed(){
-    lcd.clear();
+    clearScreen();
     lcd.setCursor(0,1);
     lcd.print("   Synchronization  ");
     lcd.setCursor(0,2);
@@ -33,7 +38,7 @@ void drawSynchronizationFailed(){
 }
 
 void drawNoRecipesFound(){
-    lcd.clear();
+    clearScreen();
     lcd.setCursor(0,0);
     lcd.print("  No Recipes Found  ");
     lcd.setCursor(0,2);
@@ -44,8 +49,7 @@ void drawNoRecipesFound(){
 
 
 void redrawRecipeList(){
-    lcd.clear();
-    delay(100);
+    clearScreen();
     drawRecipeList();
 }
 
@@ -130,7 +134,7 @@ void drawNumber(u8 number){
 
 
 void drawAbort(){
-    lcd.clear();
+    clearScreen();
     lcd.setCursor(0,1);
     lcd.print("      Aborting      ");
     lcd.setCursor(0,2);

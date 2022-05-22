@@ -65,21 +65,21 @@ void Mixing::prepare(){
         }
 
         if(isClicked(Left)){
-            lcd.clear();
+            clearScreen();
             redraw = true;
             return;
         }
 
         if(isClicked(Right)){
             redraw = true;
-            lcd.clear();
+            clearScreen();
             return;
         }
 
         if(isClicked(Enter)){
             Progress::prepare();
             redraw = true;
-            lcd.clear();
+            clearScreen();
             return;
         }
     }
@@ -88,7 +88,7 @@ void Mixing::prepare(){
 
 void Mixing::draw(){
 
-    lcd.clear();
+    clearScreen();
 
     lcd.setCursor(0,0);
     lcd.print(">> ");

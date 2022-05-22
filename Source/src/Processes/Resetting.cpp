@@ -6,7 +6,7 @@
 
 void Resetting::prepare(){
 
-    lcd.clear();
+    clearScreen();
     lcd.setCursor(0,1);
     lcd.print("  Memory Corrupted  ");
     lcd.setCursor(0,2);
