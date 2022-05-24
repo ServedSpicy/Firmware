@@ -1,43 +1,40 @@
 
-<div align = center>
-
-# Ｆｉｒｍｗａｒｅ
-
-***🔥 ServedSpicy Firmware 🔥***
-
-
-<br>
-
----
-
 [![Badge License]][License]
 
----
+<div align = center>
 
-<b>
+# Firmware
 
-┏━━━━━━┓  ┏━━━━━━┓ <br>
-┃    [Install]    ┃  ┃        [Design]       ┃ <br>
-┗━━━━━━┛  ┗━━━━━━┛ <br>
-
-</b>
-
----
+***ServedSpicy*** *Machine Controller.*
 
 </div>
 
+<br>
+
+## Files
+
+[`/Source/`][Source]
+
+    *The source code of the machine controller.*
+
+[`/Implementation/`][Implementation]
+
+    *Explanation of the implementation.*
+
+<br>
+
+
+<!--   🌶  🌶  🌶  🌶  🌶  🌶  🌶  🌶  🌶  🌶  🌶  🌶  🌶  🌶  🌶  🌶  🌶   -->
+
+[Implementation]: Implementation
+[License]: LICENSE
+[Source]: Source
+
+[Bundler]: https://github.com/ServedSpicy/Bundle
+[Deno]: https://deno.land/
 
 
 
-
-<!--////////////////////////////////| Badges |///////////////////////////////-->
+<!--   🌶  🌶  🌶  🌶  🌶  🌶  🌶    Badges    🌶  🌶  🌶  🌶  🌶  🌶  🌶   -->
 
 [Badge License]: https://img.shields.io/badge/License-AGPL_v3-blue.svg?style=for-the-badge
-
-
-<!--////////////////////////////////| Links |////////////////////////////////-->
-
-[License]: LICENSE
-
-[Design]: Design/README.md
-[Install]: https://github.com/ServedSpicy/Documentation/Firmware/Install.md
