@@ -10,6 +10,7 @@ namespace Progress {
 
     void prepare();
     void draw();
+    void next();
 }
 
 

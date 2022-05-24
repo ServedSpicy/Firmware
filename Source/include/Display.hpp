@@ -20,6 +20,7 @@ void drawSynchronizationFailed();
 void prepareDisplay();
 
 void drawAbort();
+void drawFinished();
 
 void drawNumber(u8 number);
 

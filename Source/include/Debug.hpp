@@ -2,16 +2,25 @@
 #define Header_Debug
 
 
+// #define DEBUG
+
+
 void debug();
 
 template <typename Type>
 void print(Type value){
-    // Serial.print(value);
+
+    #ifdef DEBUG
+       Serial.print(value);
+    #endif
 }
 
 template <typename Type>
 void println(Type value){
-    // Serial.println(value);
+
+    #ifdef DEBUG
+        Serial.println(value);
+    #endif
 }
 
 void test();

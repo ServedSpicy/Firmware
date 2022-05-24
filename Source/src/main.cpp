@@ -17,6 +17,7 @@
 #include "Machine/Memory.hpp"
 #include "Machine/Pins.hpp"
 #include "Machine/Integrity.hpp"
+#include "Machine/Motors.hpp"
 
 
 const auto BaudRate = 9600UL;
@@ -40,6 +41,10 @@ struct RecipeData {
     u8 size;
 };
 
+
+
+A4988 motor_container = { 200 , 10 , 11 };
+A4988 motor_dispenser = { 200 ,  8 ,  9 };
 
 
 RecipeData loadRecipe(u16 address){
@@ -248,7 +253,14 @@ void setup(){
 
     //  Photoelectric Barrier
 
+    pinMode(13,INPUT);
     pinMode(12,INPUT);
+
+    pinMode(LED_BUILTIN,OUTPUT);
+    digitalWrite(LED_BUILTIN,LOW);
+
+    motor_container.begin(120,1);
+    motor_dispenser.begin(120,1);
 
     prepareDisplay();
     drawSplashScreen();

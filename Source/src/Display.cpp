@@ -141,3 +141,12 @@ void drawAbort(){
     lcd.print("       Mixing       ");
     delay(2400);
 }
+
+void drawFinished(){
+    clearScreen();
+    lcd.setCursor(0,1);
+    lcd.print("      Finished      ");
+    lcd.setCursor(0,2);
+    lcd.print("       Mixing       ");
+    delay(2400);
+}

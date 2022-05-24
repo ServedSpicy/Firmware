@@ -59,8 +59,6 @@ bool synchronize(){
     if(!waitForBytes(2))
         return false;
 
-    test();
-
     const auto bytes = readWord();
 
     lcd.setCursor(5,2);
