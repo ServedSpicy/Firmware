@@ -3,6 +3,7 @@
 #include "Processes/Progress.hpp"
 #include "Processes/Mixing.hpp"
 
+#include "Machine/Dispenser.hpp"
 #include "Machine/Carousel.hpp"
 #include "Machine/Motors.hpp"
 #include "Machine/Pins.hpp"
@@ -28,34 +29,34 @@ void Progress::prepare(){
     Progress::draw();
     Progress::next();
 
-    cycle {
+    // cycle {
 
-        if(isClicked(Enter)){
-            drawAbort();
-            return;
-        }
+    //     if(isClicked(Enter)){
+    //         drawAbort();
+    //         return;
+    //     }
 
-        if(!digitalRead(13)){
+    //     if(!digitalRead(13)){
 
-            progress++;
+    //         progress++;
 
-            if(progress >= mixingRecipe.spices.size()){
-                drawFinished();
-                return;
-            }
-
-
-            Progress::draw();
-
-            delay(400);
-
-            Progress::next();
-        }
+    //         if(progress >= mixingRecipe.spices.size()){
+    //             drawFinished();
+    //             return;
+    //         }
 
 
+    //         Progress::draw();
 
-        motor_container.nextAction();
-    }
+    //         delay(400);
+
+    //         Progress::next();
+    //     }
+
+
+
+    //     motor_container.nextAction();
+    // }
 }
 
 void Progress::draw(){
@@ -99,4 +100,25 @@ void Progress::next(){
     println(turns);
 
     Carousel::moveTo(container);
+
+    Dispenser::intoPosition();
+
+    Dispenser::dispense(turns);
+
+    Dispenser::outOfPosition();
+
+    progress++;
+
+    Progress::draw();
+
+    if(progress >= mixingRecipe.spices.size()){
+        drawFinished();
+        return;
+    }
+
+    Progress::draw();
+
+    delay(400);
+
+    Progress::next();
 }

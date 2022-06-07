@@ -12,6 +12,7 @@
 #include "Processes/Overview.hpp"
 #include "Processes/Mixing.hpp"
 
+#include "Machine/Dispenser.hpp"
 #include "Machine/Integrity.hpp"
 #include "Machine/Carousel.hpp"
 #include "Machine/Splash.hpp"
@@ -267,6 +268,7 @@ void setup(){
     drawSplashScreen();
 
     Carousel::home();
+    Dispenser::home();
 
 
     // EEPROM.write(0,4);

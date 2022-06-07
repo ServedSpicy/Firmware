@@ -6,12 +6,10 @@
 #include "Machine/Sensors.hpp"
 
 
-const u8 homeFlapTimeout = 100;
-
 u8 position = 0;
 
 
-void moveBy(u8);
+void moveBy(int);
 
 
 void Carousel::moveTo(byte container){
@@ -35,7 +33,10 @@ void Carousel::moveTo(byte container){
 
 void moveBy(int stations){
 
+    using std::abs;
+
     const int direction = stations / abs(stations);
+    stations = abs(stations);
 
     motor_container.startMove(direction * 9999);
 
@@ -56,6 +57,7 @@ void moveBy(int stations){
             delay(wait);
         }
 
+        position += direction;
         stations--;
     }
 
