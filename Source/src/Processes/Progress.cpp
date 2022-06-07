@@ -3,6 +3,7 @@
 #include "Processes/Progress.hpp"
 #include "Processes/Mixing.hpp"
 
+#include "Machine/Carousel.hpp"
 #include "Machine/Motors.hpp"
 #include "Machine/Pins.hpp"
 
@@ -97,4 +98,5 @@ void Progress::next(){
     print("Turns : ");
     println(turns);
 
+    Carousel::moveTo(container);
 }
