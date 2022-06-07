@@ -21,6 +21,21 @@ struct Recipe {
      */
 
     std::vector<Spice> spices;
+
+
+    /**
+     * @return The combined amount of spice.
+     */
+
+    u16 amounts() const {
+
+        u16 parts = 0;
+
+        for(const auto & spice : spices)
+            parts += spice.amount;
+
+        return parts;
+    }
 };
 
 

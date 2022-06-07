@@ -12,11 +12,6 @@
 LiquidCrystal_I2C lcd(0x27,20,4);
 
 
-void drawList(){
-    for(byte r = 0;r <= 4;r++)
-        ;
-}
-
 void clearScreen(){
     lcd.clear();
     delay(10);
@@ -63,7 +58,7 @@ void drawRecipeList(){
     if(recipeCount > 0){
 
         lcd.setCursor(0,0);
-        lcd.print("Recipe List Menu");
+        lcd.print("----- Recipes ------");
 
         byte count = 3;
 

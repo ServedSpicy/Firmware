@@ -42,7 +42,7 @@ void drawSplashScreen(){
     lcd.setCursor((20 - Version.length()) * 0.5,3);
     lcd.print(Version);
 
-    delay(2000);
+    // delay(2000);
 }
 
 #endif

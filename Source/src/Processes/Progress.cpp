@@ -11,10 +11,12 @@
 #include "Main.hpp"
 
 
-u8 progress = 0;
-u16 total = 0;
+const u8 turnsPerTeaspoon = 10;
 
-void gotoContainer(u8);
+
+u8 progress = 0;
+u16 turns = 0;
+
 
 void Progress::prepare(){
 
@@ -90,19 +92,9 @@ void Progress::next(){
     print(" | ");
     println(factor);
 
-    total = mixingAmount * factor;
+    turns = turnsPerTeaspoon * mixingAmount * ((double) factor / (double) mixingRecipe.amounts());
 
-    gotoContainer(container);
-}
+    print("Turns : ");
+    println(turns);
 
-
-void gotoContainer(u8 index){
-
-    // Check if already at position
-
-    motor_container.setRPM(100);
-    motor_container.setSpeedProfile(BasicStepperDriver::CONSTANT_SPEED);
-    motor_container.move(999999);
-    println("Done Moving");
-    // motor_container.startMove(99999);
 }

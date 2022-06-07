@@ -12,12 +12,13 @@
 #include "Processes/Overview.hpp"
 #include "Processes/Mixing.hpp"
 
+#include "Machine/Integrity.hpp"
+#include "Machine/Carousel.hpp"
 #include "Machine/Splash.hpp"
 #include "Machine/Serial.hpp"
 #include "Machine/Memory.hpp"
-#include "Machine/Pins.hpp"
-#include "Machine/Integrity.hpp"
 #include "Machine/Motors.hpp"
+#include "Machine/Pins.hpp"
 
 
 const auto BaudRate = 9600UL;
@@ -265,7 +266,7 @@ void setup(){
     prepareDisplay();
     drawSplashScreen();
 
-
+    Carousel::home();
 
 
     // EEPROM.write(0,4);
