@@ -23,30 +23,11 @@
 
 
 const auto BaudRate = 9600UL;
-Mode mode = Mode::Normal;
 
 
 using namespace Memory;
 
 
-byte recipeIndex = 0;
-byte recipeCount = 0;
-u16 recipeOffset = 1;
-
-std::deque<Recipe> recipes;
-std::vector<u8> sizes;
-bool redraw = true;
-
-
-struct RecipeData {
-    Recipe recipe;
-    u8 size;
-};
-
-
-
-A4988 motor_container = { 200 , 10 , 11 };
-A4988 motor_dispenser = { 200 ,  8 ,  9 };
 
 
 RecipeData loadRecipe(u16 address){
@@ -151,89 +132,7 @@ void loadPreviousRecipe(){
 
 
 
-void idle(){
 
-    using namespace Machine::Pins;
-
-    println("Idling");
-
-    drawRecipeList();
-
-    cycle {
-
-        if(ping())
-            break;
-
-        if(
-            digitalRead(Right) ||
-            digitalRead(Left) ||
-            digitalRead(Down) ||
-            digitalRead(Up)
-        ){
-            mode = Mode::Normal;
-            break;
-        }
-
-        delay(10);
-    }
-
-    switch(mode){
-    case Normal:
-
-        println("Normal work mode started!");
-
-        if(digitalRead(Down)){
-            waitForButton(Down);
-            loadNextRecipe();
-            return;
-        }
-
-        if(digitalRead(Up)){
-            waitForButton(Up);
-            loadPreviousRecipe();
-            return;
-        }
-
-        if(digitalRead(Left)){
-            waitForButton(Left);
-            Mixing::prepare();
-            return;
-        }
-
-        if(digitalRead(Right)){
-            waitForButton(Right);
-            Mixing::prepare();
-            return;
-        }
-
-        return;
-    case Synchronizing:
-
-        if(!synchronize()){
-            println("Failed to synchronize!");
-            drawSynchronizationFailed();
-        } else {
-
-            recipeIndex = 0;
-            recipeCount = 0;
-            recipeOffset = 1;
-            redraw = true;
-            recipes.clear();
-            sizes.clear();
-
-            Overview::prepare();
-        }
-
-        redrawRecipeList();
-
-        return;
-    case Debug:
-
-        debug();
-
-        return;
-    }
-}
 
 void setup(){
 
@@ -299,5 +198,5 @@ void setup(){
 }
 
 void loop(){
-    idle();
+    Overview::idle();
 }

@@ -23,6 +23,17 @@ extern u16 recipeOffset;
 extern bool redraw;
 
 
+struct RecipeData {
+    Recipe recipe;
+    u8 size;
+};
+
+
+RecipeData loadRecipe(u16 address);
+void loadNextRecipe();
+void loadPreviousRecipe();
+
+
 inline void waitForButton(u8 pin){
     while(digitalRead(pin))
         delay(1);

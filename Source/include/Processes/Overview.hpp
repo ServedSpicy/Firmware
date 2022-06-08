@@ -7,6 +7,8 @@
 namespace Overview {
 
     void prepare();
+
+    void idle();
 }
 
 
