@@ -158,23 +158,6 @@ void setup(){
     pinMode(12,INPUT);
     pinMode(2,INPUT);
 
-    // while(true){
-
-    //     if(digitalRead(12))
-    //         print(" 12 ");
-
-    //     if(digitalRead(13))
-    //         print(" 13 ");
-
-    //     if(digitalRead(2))
-    //         print(" 2 ");
-
-    //     print("\n");
-    //     print("\n");
-
-    //     delay(200);
-    // }
-
     pinMode(LED_BUILTIN,OUTPUT);
     digitalWrite(LED_BUILTIN,LOW);
 
@@ -186,35 +169,6 @@ void setup(){
 
     Dispenser::home();
     Carousel::home();
-
-    // delay(200);
-
-    // Carousel::moveTo(6);
-    // Dispenser::dispense(6);
-
-    // EEPROM.write(0,4);
-    // Memory::writeString(1,"Chicken Mix1");
-    // EEPROM.write(14,1);
-    // EEPROM.write(15,4);
-    // EEPROM.write(16,2);
-
-    // Memory::writeString(17,"Chicken Mix2");
-    // EEPROM.write(30,1);
-    // EEPROM.write(31,4);
-    // EEPROM.write(32,2);
-
-    // Memory::writeString(33,"Chicken Mix3");
-    // EEPROM.write(46,1);
-    // EEPROM.write(47,4);
-    // EEPROM.write(48,2);
-
-    // Memory::writeString(49,"Chicken Mix4");
-    // EEPROM.write(62,2);
-    // EEPROM.write(63,4);
-    // EEPROM.write(64,2);
-    // EEPROM.write(65,66);
-    // EEPROM.write(66,12);
-
 
     Overview::prepare();
 }
