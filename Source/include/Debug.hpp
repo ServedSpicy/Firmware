@@ -2,7 +2,7 @@
 #define Header_Debug
 
 
-// #define DEBUG
+#define DEBUG
 
 
 void debug();

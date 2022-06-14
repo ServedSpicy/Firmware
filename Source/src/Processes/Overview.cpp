@@ -17,7 +17,6 @@
 
 void Overview::prepare(){
 
-
     Integrity::checkEEPROM();
 
 

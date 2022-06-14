@@ -7,5 +7,5 @@ Sensor::Sensor(u8 pin)
 
 
 bool Sensor::isOn() const {
-    return digitalRead(pin);
+    return digitalRead(pin) == LOW;
 }

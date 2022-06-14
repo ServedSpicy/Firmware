@@ -154,8 +154,26 @@ void setup(){
 
     //  Photoelectric Barrier
 
-    pinMode(13,INPUT);
+    pinMode(A0,INPUT);
     pinMode(12,INPUT);
+    pinMode(2,INPUT);
+
+    // while(true){
+
+    //     if(digitalRead(12))
+    //         print(" 12 ");
+
+    //     if(digitalRead(13))
+    //         print(" 13 ");
+
+    //     if(digitalRead(2))
+    //         print(" 2 ");
+
+    //     print("\n");
+    //     print("\n");
+
+    //     delay(200);
+    // }
 
     pinMode(LED_BUILTIN,OUTPUT);
     digitalWrite(LED_BUILTIN,LOW);
@@ -166,9 +184,13 @@ void setup(){
     prepareDisplay();
     drawSplashScreen();
 
-    Carousel::home();
     Dispenser::home();
+    Carousel::home();
 
+    // delay(200);
+
+    // Carousel::moveTo(6);
+    // Dispenser::dispense(6);
 
     // EEPROM.write(0,4);
     // Memory::writeString(1,"Chicken Mix1");

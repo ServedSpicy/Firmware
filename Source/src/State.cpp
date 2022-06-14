@@ -24,9 +24,9 @@ vector<u8> sizes;
 
 
 Sensor
-    sensor_container { 0 } ,
-    sensor_dispenser { 0 } ,
-    sensor_homing    { 0 } ;
+    sensor_container { A0 } ,
+    sensor_dispenser { 12 } ,
+    sensor_homing    { 2 } ;
 
 A4988
     motor_container = { 200 , 10 , 11 } ,
