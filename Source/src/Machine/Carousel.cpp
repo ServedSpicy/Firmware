@@ -59,6 +59,13 @@ void moveBy(int stations){
             motor_container.nextAction();
 
         position += direction;
+
+        if(position < 0)
+            position += 16;
+
+        if(position > 15)
+            position -= 16;
+
         stations--;
     }
 
