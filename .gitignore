@@ -6,3 +6,12 @@
 #   VSCode Settings
 
 .vscode
+
+#   Platform IO Build Folder
+
+Build
+
+
+#   Platform IO Dependencies
+
+Dependencies
